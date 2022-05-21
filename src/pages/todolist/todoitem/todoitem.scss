@@ -1,0 +1,39 @@
+@import "../../../global.scss";
+.todo {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: $mainColor;
+    margin: 5px;
+    width: 400px;
+    border-radius: 5px;
+    cursor: default;
+    @include mobile {
+        width: 280px;
+        font-size: 15px;
+    }
+    .complete-button {
+        border-radius: 50%;
+        padding: 7px;
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover {
+            background-color: $secondaryColor;
+            color: white;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+    .trash-button {
+        border-radius: 50%;
+        padding: 7px;
+        cursor: pointer;
+        margin-left: 10px;
+        &:hover {
+            background-color: $greyColor;
+            color: white;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}

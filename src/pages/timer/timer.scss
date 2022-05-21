@@ -1,0 +1,75 @@
+@import "../../global.scss";
+.timer-wrapper {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    p {
+        margin: 1rem;
+    }
+    .timer-container {
+        background-color: $greyColor;
+        border-radius: 30px;
+    }
+}
+
+.session-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.console {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.status-header {
+    margin: 10px;
+}
+
+.time-change-button {
+    text-align: center;
+    padding: 8px;
+    margin: 5px;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(161, 155, 155);
+        transition: all .2s ease-out;
+    }
+    i {
+        text-align: center;
+        margin: 0px;
+        font-size: 2rem;
+        color: $mainColor;
+    }
+}
+
+.timer-button {
+    font-size: 30px;
+    padding: .3em .4em;
+    background: $mainColor;
+    color: #f4f4f4;
+    border: 0px solid #A0AEC0;
+    margin: .1em;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #A0AEC0;
+    &:hover {
+        background: #f4f4f4;
+        color: $mainColor;
+        transition: all .3s ease-out;
+    }
+}
+
+.progress-bar {
+    width: 200px;
+    height: 200px;
+}

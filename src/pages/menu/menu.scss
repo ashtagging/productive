@@ -1,0 +1,64 @@
+@import "../../global.scss";
+
+/* Styles for Menu */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    @include mobile {
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+    }
+    button {
+        font-size: 5vmin;
+        padding: .5em 1em;
+        background: $mainColor;
+        color: #f4f4f4;
+        border: 0px solid #a0a9b4;
+        margin: .07em;
+        transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+        box-shadow: 0 0 0 #aab4b9;
+        transform: translateY(0);
+        cursor: pointer;
+        @include mobile {
+            border-radius: 0.5em;
+            height: 250px;
+            width: 250px;
+            font-size: 39px;
+        }
+        i {
+            color: #FED7E2;
+            margin-right: .3em;
+            transition: all .2s ease-out;
+        }
+    }
+}
+
+.calculator-button {
+    border-radius: .5em 0 0 .5em;
+}
+
+.todolist-button {
+    border-radius: 0 .5em .5em 0;
+}
+
+.app-button {
+    &:hover {
+        button {
+            &:hover {
+                background: $mainColor;
+                color: #fff;
+                box-shadow: 0 0 0.8em 0 grey;
+                transform: translateY(-.2em);
+                i {
+                    color: $greyColor;
+                    transform: rotate(-10deg);
+                }
+            }
+        }
+    }
+}

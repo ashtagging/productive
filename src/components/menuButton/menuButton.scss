@@ -1,0 +1,43 @@
+@import "../../global.scss";
+.menu-button-container {
+    margin: 12px;
+    @include mobile {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 40px;
+    }
+    button {
+        font-size: 4vmin;
+        padding: 0.5em 1em;
+        background: $mainColor;
+        color: #f4f4f4;
+        border: 0px solid #a0a9b4;
+        margin: 0.07em;
+        transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 0 0 #aab4b9;
+        transform: translateY(0);
+        border-radius: 8px;
+        cursor: pointer;
+        @include mobile {
+            height: 60px;
+            width: 120px;
+            font-size: 18px;
+        }
+        i {
+            color: #fed7e2;
+            margin-right: 0.3em;
+            transition: all 0.2s ease-out;
+        }
+        &:hover {
+            background: $mainColor;
+            color: #fff;
+            box-shadow: 0 0 0.8em 0 grey;
+            transform: translateY(-.2em);
+            i {
+                color: $greyColor;
+                transform: rotate(-10deg);
+            }
+        }
+    }
+}

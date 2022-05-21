@@ -1,0 +1,84 @@
+@import "../../global.scss";
+
+/* Styles for Calculator */
+
+.calculator-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    @include mobile {
+        margin-top: 90px;
+    }
+    .calculator-container {
+        display: grid;
+        grid-template-columns: repeat(4, 90px);
+        grid-template-rows: minmax(120px, auto) repeat(5, 90px);
+        justify-content: center;
+        align-content: center;
+        max-height: 100vh;
+        background-color: $greyColor;
+        border-radius: 30px;
+        padding: 20px;
+        overflow: hidden;
+        @include mobile {
+            grid-template-columns: repeat(4, 80px);
+            grid-template-rows: minmax(120px, auto) repeat(5, 80px);
+        }
+        .display {
+            grid-column: 1 / -1;
+            background-color: rgba(26, 24, 24, 0.75);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            flex-direction: column;
+            padding: 10px;
+            word-wrap: break-word;
+            word-break: break-all;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 2px;
+        }
+        button {
+            font-size: 2.2rem;
+            background: white;
+            color: $greyColor;
+            border: 0 solid #a0aec0;
+            margin: 0.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            &:hover {
+                background: #a0aec0;
+                color: #fff;
+                box-shadow: 0 0 0.8em 0 #a0aec0;
+                transition: all 0.3s ease-in-out;
+            }
+            @include mobile {
+                font-size: 2rem;
+            }
+        }
+        .span-two {
+            grid-column: span 2;
+        }
+        .alt-color {
+            background-color: $mainColor;
+            color: white;
+            &:hover {
+                background-color: $mainColor;
+                color: #fff;
+                box-shadow: 0 0 0.8em 0 white;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        .alt-color-2 {
+            background-color: $secondaryColor;
+            color: white;
+            &:hover {
+                background-color: $secondaryColor;
+                color: #fff;
+                box-shadow: 0 0 0.8em 0 white;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+}
