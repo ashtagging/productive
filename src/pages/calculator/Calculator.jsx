@@ -132,7 +132,7 @@ function Calculator() {
   return (
     <div className="calculator-page">
       <MenuButton/>
-      <div className="calculator-wrapper">
+    <div className="calculator-wrapper">
     <div className="calculator-container">
       <div className="display" >
         <div className="previous-operand">

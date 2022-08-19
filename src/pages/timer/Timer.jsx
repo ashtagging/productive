@@ -69,8 +69,6 @@ function Timer() {
 
   useEffect(() => {
     if (timerOn) {
-      console.log("secondsLeft" + secondsLeft);
-      console.log("totalSeconds" + totalSeconds);
       if (timerStatus === "session") {
         const sessionInterval = setInterval(() => {
           setDisplayTime(displayTime - 1);
@@ -112,14 +110,15 @@ function Timer() {
   return (
     <div className="timer">
       <MenuButton />
-
       <div className="timer-wrapper">
         <div className="timer-container">
-          <h2 className="status-header">
+          <h2 className="status-header" id="timer-label">
             {timerStatus === "break" ? "Break" : "Session"}
           </h2>
           <CircularProgressbar
             className="progress-bar"
+            class="countdown-timer"
+            id="time-left"
             text={formatTime(displayTime)}
             value={Math.floor((secondsLeft / totalSeconds) * 100)}
             styles={buildStyles({ pathColor: `#D83716`, textColor: `white` })}
@@ -127,48 +126,55 @@ function Timer() {
           <div className="console">
             <div className="session-container">
               <div className="session-length">
-                <p>Session Length</p>
-                <p>{formatTime(sessionTime)}</p>
+                <p id="session-label">Session Length</p>
+                <p id="session-length">{formatTime(sessionTime)}</p>
                 <button
                   className="time-change-button"
+                  id="session-decrement"
                   onClick={() => changeTime(-60, "session")}
                 >
                   <i className="fa-solid fa-circle-minus"></i>
                 </button>
                 <button
                   className="time-change-button"
+                  id="session-increment"
                   onClick={() => changeTime(60, "session")}
                 >
                   <i className="fa-solid fa-circle-plus"></i>
                 </button>
               </div>
               <div className="break-time">
-                <p>Break Time</p>
-                <p>{formatTime(breakTime)}</p>
+                <p id="break-label">Break Length</p>
+                <p id="break-length">{formatTime(breakTime)}</p>
                 <button
                   className="time-change-button"
+                  id="break-decrement"
                   onClick={() => changeTime(-60, "break")}
                 >
                   <i className="fa-solid fa-circle-minus"></i>
                 </button>
                 <button
                   className="time-change-button"
+                  id="break-increment"
                   onClick={() => changeTime(60, "break")}
                 >
                   <i className="fa-solid fa-circle-plus"></i>
                 </button>
               </div>
             </div>
-
             <div className="button-container">
-              <button className="timer-button" onClick={changeTimerStatus}>
+              <button
+                className="timer-button"
+                id="start_stop"
+                onClick={changeTimerStatus}
+              >
                 {!timerOn ? (
                   <i className="fa-solid fa-play"></i>
                 ) : (
                   <i className="fa-solid fa-pause"></i>
                 )}
               </button>
-              <button onClick={resetTimer} className="timer-button">
+              <button className="timer-button" id="reset" onClick={resetTimer}>
                 <i className="fa-solid fa-arrows-rotate"></i>
               </button>
             </div>
