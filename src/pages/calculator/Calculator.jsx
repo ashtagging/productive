@@ -6,40 +6,41 @@ function Calculator() {
  
   const [currentState, setCurrentState] = useState("0");
   const [prevState, setPrevState] = useState("");
-  const [calculateState, setCalculateState] = useState(false)
+  const [calculateState, setCalculateState] = useState(false);
 
     const handleNumber = (event) => {
 
-    if(currentState.length === 13){
-      return
-    }
+      if(currentState.length === 12){
+      return;
+      }
 
-    if(calculateState === true){
-      setPrevState(event.target.name)
-      setCurrentState(event.target.name)
-      setCalculateState(false)
-      return
-    }
+      if(calculateState === true){
+        setPrevState(event.target.name);
+        setCurrentState(event.target.name);
+        setCalculateState(false);
+        return;
+      }
   
       if(event.target.name === "0" && currentState === "0")
       {
-        return
-      } else if (currentState === "0"){
+        return;
+      } 
+      else if (currentState === "0"){
         setCurrentState(event.target.name);
-        setPrevState(event.target.name)    
-      } else if (prevState[prevState.length-1] === "1" || "2" || "3" || "4"||"5"||"6"||"7"||"8"||"9")
-        {
+        setPrevState(event.target.name);    
+      } 
+      else if (prevState[prevState.length-1] === "1" || "2" || "3" || "4"||"5"||"6"||"7"||"8"||"9"){
           if (currentState.includes("+" || "-" || "*" || "/" )){
             setPrevState(prevState.concat(event.target.name));
-            setCurrentState(event.target.name)
+            setCurrentState(event.target.name);
           } else {
             setPrevState(prevState.concat(event.target.name));
-            setCurrentState(currentState.concat(event.target.name))
+            setCurrentState(currentState.concat(event.target.name));
           }
-        } 
+      } 
       else {
         setPrevState(prevState.concat(event.target.name));
-        setCurrentState(event.target.name)
+        setCurrentState(event.target.name);
       }
     }
 
@@ -47,50 +48,50 @@ function Calculator() {
     // if calculated state true + operation press ---> use calculated sum + concat event handler 
 
     const handleOperator = event => {
-      const lastChar = prevState[prevState.length -1]
-      const secondLastChar = prevState[prevState.length -2]
-      const operatorsNoMinus = ["+","*","/"]
+      const lastChar = prevState[prevState.length -1];
+      const secondLastChar = prevState[prevState.length -2];
+      const operatorsNoMinus = ["+","*","/"];
 
       if(currentState.length === 13){
-        return
+        return;
       }
 
       if(calculateState === true){
-        setPrevState(currentState + event.target.name)
-        setCurrentState(event.target.name)
-        setCalculateState(false)
-        return
+        setPrevState(currentState + event.target.name);
+        setCurrentState(event.target.name);
+        setCalculateState(false);
+        return;
       }
 
       if(lastChar === event.target.name)
       { // if previous operation === event handler --> return (do nothing)
-        return
+        return;
       }
       else if(operatorsNoMinus.includes(lastChar) && event.target.name === "-")
       { 
         // if previous operation is (+,/,*) && event handler === ("-") --> concat "-" to previous operand
-        setPrevState(prevState + "-")
+        setPrevState(prevState + "-");
         setCurrentState(event.target.name);
       }
       else if (operatorsNoMinus.includes(lastChar) && operatorsNoMinus.includes(event.target.name)){
         // if previous operation is (+,/,*) && event handler === (+,/,*) --> replace previous operation with event handler 
-        setPrevState(prevState.slice(0,-1) + event.target.name)
-        setCurrentState(event.target.name)
+        setPrevState(prevState.slice(0,-1) + event.target.name);
+        setCurrentState(event.target.name);
       }
-      else if(lastChar === "-" && operatorsNoMinus.includes(secondLastChar) && operatorsNoMinus.includes(event.target.name))
-      { // if previous operation is ("-") && the previous previous operation (0,-2) === (+,/,*) && event handler === (+,/,*) 
+      else if(lastChar === "-" && operatorsNoMinus.includes(secondLastChar) && operatorsNoMinus.includes(event.target.name)){ 
+        // if previous operation is ("-") && the previous previous operation (0,-2) === (+,/,*) && event handler === (+,/,*) 
         // --> remove both operators and replace with the event handler
-        setPrevState(prevState.slice(0,-2) + event.target.name)
-        setCurrentState(event.target.name)
+        setPrevState(prevState.slice(0,-2) + event.target.name);
+        setCurrentState(event.target.name);
       }
       else if(lastChar === "-" && operatorsNoMinus.includes(event.target.name)){
         // if previous operation is ("-") && event handler === (+,/,*) --> replace previous operation with event handler
-        setPrevState(prevState.slice(0,-1) + event.target.name)
-        setCurrentState(event.target.name)
+        setPrevState(prevState.slice(0,-1) + event.target.name);
+        setCurrentState(event.target.name);
       }
       else {
         // else add the operation to the expression
-        setPrevState(prevState.concat(event.target.name))
+        setPrevState(prevState.concat(event.target.name));
         setCurrentState(event.target.name);
       }
     }
@@ -99,32 +100,34 @@ function Calculator() {
 
     // Prevents a second decimal point from being inputted into the calculation
       if (currentState.includes(".") && event.target.innerText === ".") {
-        return
-      } else {
+        return;
+      } 
+      else {
         setCurrentState(currentState.concat(event.target.name));
-        setPrevState(prevState.concat(event.target.name))
+        setPrevState(prevState.concat(event.target.name));
       }
     }
 
     const calculate = () => {
-      setCurrentState(parseFloat(eval(prevState).toFixed(8)))
+      setCurrentState(parseFloat(eval(prevState).toFixed(8)));
       setPrevState(prevState + "=" + parseFloat(eval(prevState).toFixed(8))); 
-      setCalculateState(true)
-      console.log("current State is: " + currentState)
-      console.log("previous State is: " + prevState)
+      setCalculateState(true);
+      console.log("current State is: " + currentState);
+      console.log("previous State is: " + prevState);
     };
 
     const clearAll = () => {
       // Clears all of the current calculation being inputted and the saved previous number
-      setCurrentState("0")
-      setPrevState("")
+      setCurrentState("0");
+      setPrevState("");
     }
 
     const deletePrevious = () =>{
       // If currentState is a single character or empty, reset to "0"
       if (currentState.length <= 1) {
         setCurrentState("0");
-      } else {
+      } 
+      else {
         // Otherwise, delete the last character
         setCurrentState(currentState.slice(0, -1));
       }
