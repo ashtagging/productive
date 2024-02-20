@@ -20,11 +20,6 @@ function Calculator() {
       setCalculateState(false)
       return
     }
-
-    // Need to change this so that when the decimal is clicked the . still remains
-    // Checks the event input against the sum, if the current sum is 0 Then a 0 can't be added
-    // Changes the 0 to the inputted number if 0 only 
-    // Else appends a new number to the end of the sum
   
       if(event.target.name === "0" && currentState === "0")
       {
@@ -126,9 +121,15 @@ function Calculator() {
     }
 
     const deletePrevious = () =>{
-      //deletes the last inputted number
-      setCurrentState(currentState.slice(0, -1));
+      // If currentState is a single character or empty, reset to "0"
+      if (currentState.length <= 1) {
+        setCurrentState("0");
+      } else {
+        // Otherwise, delete the last character
+        setCurrentState(currentState.slice(0, -1));
+      }
     }
+    
   return (
     <div className="calculator-page">
       <MenuButton/>
