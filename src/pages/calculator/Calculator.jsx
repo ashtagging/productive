@@ -3,24 +3,23 @@ import MenuButton from "../../components/menuButton/MenuButton";
 import "./calculator.scss";
 
 function Calculator() {
- 
-  const [currentState, setCurrentState] = useState("0");
-  const [prevState, setPrevState] = useState("");
-  const [calculateState, setCalculateState] = useState(false);
+  
+    const [currentState, setCurrentState] = useState("0");
+    const [prevState, setPrevState] = useState("");
+    const [calculateState, setCalculateState] = useState(false);
 
     const handleNumber = (event) => {
 
       if(currentState.length === 12){
       return;
       }
-
       if(calculateState === true){
         setPrevState(event.target.name);
         setCurrentState(event.target.name);
         setCalculateState(false);
         return;
       }
-  
+
       if(event.target.name === "0" && currentState === "0")
       {
         return;
@@ -51,18 +50,15 @@ function Calculator() {
       const lastChar = prevState[prevState.length -1];
       const secondLastChar = prevState[prevState.length -2];
       const operatorsNoMinus = ["+","*","/"];
-
       if(currentState.length === 13){
         return;
       }
-
       if(calculateState === true){
         setPrevState(currentState + event.target.name);
         setCurrentState(event.target.name);
         setCalculateState(false);
         return;
       }
-
       if(lastChar === event.target.name)
       { // if previous operation === event handler --> return (do nothing)
         return;
@@ -97,8 +93,7 @@ function Calculator() {
     }
 
     const handleDecimal = event => {
-
-    // Prevents a second decimal point from being inputted into the calculation
+      // Prevents a second decimal point from being inputted into the calculation
       if (currentState.includes(".") && event.target.innerText === ".") {
         return;
       } 
@@ -120,9 +115,9 @@ function Calculator() {
       // Clears all of the current calculation being inputted and the saved previous number
       setCurrentState("0");
       setPrevState("");
-    }
+    };
 
-    const deletePrevious = () =>{
+    const deletePrevious = () => {
       // If currentState is a single character or empty, reset to "0"
       if (currentState.length <= 1) {
         setCurrentState("0");
